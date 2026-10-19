@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><title>Library System</title>
+<style>
+body{font-family:Arial;background:#f4f6f9;margin:0}
+.container{max-width:900px;margin:20px auto;background:white;padding:20px;border-radius:10px}
+h1{text-align:center}
+.form-box{display:flex;gap:10px;margin-bottom:20px}
+.form-box input{flex:1;padding:10px}
+.form-box button{padding:10px 20px;background:blue;color:white;border:none;border-radius:5px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px;border-bottom:1px solid #ddd}
+th{background:#333;color:white}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>📚 मेरी लाइब्रेरी</h1>
+<form action="/add" method="POST" class="form-box">
+<input type="text" name="title" placeholder="किताब का नाम" required>
+<input type="text" name="author" placeholder="लेखक का नाम" required>
+<button type="submit">जोड़ो</button>
+</form>
+<table>
+<tr><th>ID</th><th>नाम</th><th>लेखक</th><th>हटाओ</th></tr>
+{% for book in books %}
+<tr><td>{{book.id}}</td><td>{{book.title}}</td><td>{{book.author}}</td><td><a href="/delete/{{book.id}}">Delete</a></td></tr>
+{% endfor %}
+</table>
+</div>
+</body>
+</html>
